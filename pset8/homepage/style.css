@@ -1,0 +1,91 @@
+body {
+    background-color: #0a1930;
+}
+.container {
+    display: flex;
+    margin: 0 30px;
+    flex-direction: column;
+}
+.navbar {
+   display: flex; 
+   padding: 0 10px;
+   justify-content: space-between;
+}
+h1{
+    color: #64FFDA;
+    border: 0.2px solid #64FFDA;
+    padding: 4px;
+    border-radius: 5px;
+}
+ul{
+    list-style-type: none;
+    margin-top: 30px;
+}
+li{
+    display: inline;
+    margin-right: 10px;
+}
+a{
+    font-size: 25px;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+}
+li a:hover{
+    background-color:#306d5f;
+}
+img{
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+    border: 1px solid #64FFDA;
+}
+#about{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+#profile{
+    padding-top: 100px;
+    display: flex;
+    justify-content: center;
+}
+#intro{
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+}
+h2{
+    text-align: center;
+    color: #64FFDA;
+    font-size: 30px;
+}
+#aboutme{
+    display: flex;
+    justify-content: center;
+}
+p{
+    text-align: center;
+    color: rgb(153, 150, 150);
+    font-size: 25px;
+    width: 40%;
+}
+table td{
+    color: #64FFDA;
+    padding: 5px 20px;
+    font-size: 20px;
+}
+#technologies{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+#techtable{
+    display: flex;
+    justify-content: center;
+}
+#techHeader{
+    display: flex;
+    justify-content: center;
+}

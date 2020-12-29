@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block main %}
+   <div>
+        <ul id='todos' class='list-group list-group-flush'>
+            {% for task in tasks %}
+            <li  class="list-group-item">
+                <span>
+                    <button data-id={{ task[0] }} data-title={{ task[2] }} class='btn btn-default delete'>
+                        <i class='fa fa-trash-o' style="font-size: 20px;"></i>
+                    </button>
+                </span>
+                <span id='title' class='ml-3'>{{ task[2] }}</span>
+                <!-- <span class='ml-5 stopwatch'>
+                    <i id='start' style="font-size:15px;color:green;" class="fa">&#xf04b;</i>
+                    <i id='stop' style="font-size:15px;color: red;" class="fa">&#xf04d;</i>
+                </span> -->
+            </li>
+            {% endfor %}
+        </ul>
+        <br>
+        <div id='addTaskForm'>
+            <form class="form-inline" action="/add" method="post">
+                <div class="form-group">
+                    <input autocomplete="off" id='task' class='form-control  mr-sm-2' autofocus name="task" placeholder="Task" type="text">
+                </div>
+                <button class="btn btn-primary" id='button' type="submit">Add task</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+<script>
+     const deleteButton = document.querySelectorAll('.delete');
+     const submitButton = document.querySelector('#button');
+     deleteButton.forEach (button => {
+        button.addEventListener("click", () => {
+        const audio = document.querySelector('#audio');
+        audio.play();
+         const item = button.parentElement.parentElement;
+         const title = button.parentElement.nextElementSibling.innerHTML;
+         const parentItem = item.parentElement;
+         parentItem.removeChild(item);
+         
+         const taskData = { id: button.dataset.id, title }
+         const json = JSON.stringify(taskData);
+         fetch('/delete', {
+             method: 'POST', 
+             headers: { 'Content-Type':'application/json' },
+             body: json
+         })
+         .then(res => console.log(result))
+         .catch(err => console.log(''))
+     });
+     })
+
+
+</script>
+{% endblock %}

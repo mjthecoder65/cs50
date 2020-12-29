@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Symbol</th>
+        <th scope="col">Name</th>
+        <th scope="col">Shares</th>
+        <th scope="col">Price</th>
+        <th scope="col">TOTAL</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for stock in stocks %}
+         <tr>
+            <th scope="row">{{ stock['symbol'] }}</th>
+            <td>{{ stock['name'] }} </td>
+            <td>{{ stock['shares'] }}</td>
+            <td>${{ stock['price'] }}</td>
+            <td>{{ usd(stock['price']  * stock['shares']) }}</td>
+        </tr>
+        {% endfor %}
+      <tr>
+        <th scope="row">CASH</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>{{ usd(cash) }}</td>
+      </tr>
+      <tr>
+        <th style='background-color: white;' scope="row"></th>
+        <td style='background-color: white;'></td>
+        <td style='background-color: white;'></td>
+        <td style='background-color: white;'></td>
+        <td style='background-color: white;'>{{ usd(total) }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <form action="/add" method="get">
+    <button class="btn btn-primary" type="submit">Add Cash</button>
+  </form>
+{% endblock %}
